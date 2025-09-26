@@ -3,6 +3,8 @@ import pandas as pd
 
 def get_data(tickers, start_date, end_date=None, save=False):
 
+    "Generates pd.DataFrame with Close Adj from tickers"
+
     assert len(tickers) > 1, "We need at least two tickers to evaluate the efficient strategy"
 
     print(f"Collecting data for tickers {tickers}...")
