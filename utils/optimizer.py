@@ -16,11 +16,9 @@ class Optimizer():
 
     def compute_daily_return(self)-> pd.DataFrame:
 
-        daily_returns = np.log(self.data / self.data.shift(1)).dropna()
-
-        return daily_returns
+        return np.log(self.data / self.data.shift(1)).dropna()
     
-    def compute_annual_return(self)-> float:
+    def compute_annual_return(self)-> pd.Series:
 
         return self.daily_returns.mean() * self.trading_days
     
@@ -42,7 +40,6 @@ class Optimizer():
         min_volatility_portfolio = minimize(
         fun = self.compute_volatility,
         x0 = init_guess,
-        args = (),
         method = 'SLSQP',
         bounds = bounds,
         constraints = constraints
@@ -54,4 +51,4 @@ class Optimizer():
     
     def compute_portfolio_return(self, weights):
 
-        return round(np.dot(weights, self.annual_returns), 2)
+        return np.dot(weights, self.annual_returns)
