@@ -17,6 +17,7 @@ It allows you to compute the **minimum-variance portfolio**, expected returns, a
   - Maximum **Sharpe Index portfolio**  
   - **Markowitz efficient frontier** plotting  
   - Custom constraints  
+  - Options to develop strategies
 
 ---
 
